@@ -1,0 +1,8 @@
+version: "3"
+services:
+  prac_websocket_rust:
+    build: .
+    image: prac_websocket_rust-image
+    container_name: prac_websocket_rust
+    ports:
+      - 8080:8082

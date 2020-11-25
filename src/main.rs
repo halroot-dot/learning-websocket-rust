@@ -1,11 +1,18 @@
 extern crate ws;
 use ws::listen;
-
 fn main() {
-    listen("127.0.0.1:8080", |out| {
-        move |msg|{
+    let listen_url = "0.0.0.0:8082";
+    //let listen_url ="127.0.0.1:8082";
+
+    println!("Runing Server");
+
+    listen(listen_url, |out| {
+        move |msg| {
             let response: String = format!("Hello {}", msg);
+            println!("{}", response);
             out.send(response)
         }
-    }).unwrap()
+    })
+    .unwrap()
+    // TODO: Addressが既に使われている場合、unwrap()でErrが返されpanicになる
 }
